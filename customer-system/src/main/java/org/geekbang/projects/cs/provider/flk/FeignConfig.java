@@ -1,8 +1,7 @@
-package org.geekbang.projects.cs.provider;
+package org.geekbang.projects.cs.provider.flk;
 
 import feign.Client;
 import feign.Feign;
-import feign.codec.Decoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

@@ -1,11 +1,11 @@
-package org.geekbang.projects.cs.provider;
+package org.geekbang.projects.cs.provider.flk;
 
 import lombok.Data;
 
 /**
  * {
  * "algorithmType":"sm4",
- * "encryptData":"fe9nL3aTCAbTa9hIBseK5fFljWvIYnyczInmVIioqVE=",
+ * "data":"1234567812345678",
  * "encMode":"cbc",
  * "iv":"AAAAAAAAAAAAAAAAAAAAAA==",
  * "key":"sm4_1",
@@ -14,11 +14,11 @@ import lombok.Data;
  * }
  */
 @Data
-public class DecryptDto extends EncryptOrDecryptDto {
+public class EncryptDto extends EncryptOrDecryptDto {
 
     /**
      * 数据，必填
-     * 需要进行解密的数据
+     * 需要进行加密的数据
      */
-    private String encryptData;
+    private String data;
 }

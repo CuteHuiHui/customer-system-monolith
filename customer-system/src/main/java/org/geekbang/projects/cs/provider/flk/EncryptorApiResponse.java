@@ -1,4 +1,4 @@
-package org.geekbang.projects.cs.provider;
+package org.geekbang.projects.cs.provider.flk;
 
 import lombok.Data;
 

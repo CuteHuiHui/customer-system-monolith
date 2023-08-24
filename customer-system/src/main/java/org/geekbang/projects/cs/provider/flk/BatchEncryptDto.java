@@ -1,4 +1,4 @@
-package org.geekbang.projects.cs.provider;
+package org.geekbang.projects.cs.provider.flk;
 
 import lombok.Data;
 
@@ -7,8 +7,7 @@ import java.util.List;
 /**
  * {
  * "algorithmType":"sm4",
- * "encryptData":[{"id": "1","name": "0nKtfXvvMzi8kCjd4gECPA=="},{"id": "2","name":
- * "T0KHgw6Mbm0WDamovC57ZA=="}],
+ * "data":[{"id":1,"name":"zhangsan"},{"id":2,"name":"lisi"}],
  * "encMode":"cbc",
  * "iv":"AAAAAAAAAAAAAAAAAAAAAA==",
  * "key":"xQM9Kv70IOfYk0A877Uuiw==",
@@ -18,13 +17,12 @@ import java.util.List;
  * }
  */
 @Data
-public class BatchDecryptDto<T> extends EncryptOrDecryptDto {
-
+public class BatchEncryptDto<T> extends EncryptOrDecryptDto {
     /**
      * 数据，必填
-     * 需要进行解密的数据
      */
-    private List<T> encryptData;
+    private List<T> data;
+
 
     /**
      * 哪些字段不需要加密，必填

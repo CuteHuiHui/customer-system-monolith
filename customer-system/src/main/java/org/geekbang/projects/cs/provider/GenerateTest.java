@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import org.geekbang.projects.cs.Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,7 +18,7 @@ import java.util.Collections;
 
 @SpringBootTest(classes = Application.class)
 @RunWith(SpringRunner.class)
-public class Test1 {
+public class GenerateTest {
     @Test
     public void test01() {
         //创建一个代码生成器
