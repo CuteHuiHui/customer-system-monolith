@@ -171,6 +171,60 @@
             <groupId>com.xuxueli</groupId>
             <artifactId>xxl-job-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- mysql驱动，让项目可以连接上MySQL数据库，自己数据库是什么版本的，就导入对应版本的驱动，我这里的数据库是8.0.27 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
+
+        <!-- springboot整合MybatisPlus，这个依赖只有在SpringBoot项目中才需要导入，其他项目无需导入这个依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatisplus-spring-boot-starter</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
+        <!-- MyBatisPlus依赖，要使用MyBatisPlus就必须导入MyBatisPlus的依赖，因为MyBatisPlus中默认有MyBatis的依赖，所以无需再导入MyBatis的依赖了 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>3.4.3.4</version>
+        </dependency>
+
+        <!-- MyBatis代码生成器依赖，要使用代码生成器，就需要导入代码生成器依赖 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.5.1</version>
+        </dependency>
+
+        <!-- MyBatis代码生成器的模板引擎，这个也许需要导入的，官方的文档是这样写的，velocity引擎是默认的，不需要配置其他东西，比较方便，其他模板引擎也可以使用，还可以自定义模板引擎，具体请看官网 -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.3</version>
+        </dependency>
+
 
     </dependencies>
 
