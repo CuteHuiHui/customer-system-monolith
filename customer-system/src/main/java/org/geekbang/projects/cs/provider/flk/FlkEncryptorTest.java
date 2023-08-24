@@ -1,4 +1,4 @@
-package org.geekbang.projects.cs.provider;
+package org.geekbang.projects.cs.provider.flk;
 
 import cn.hutool.json.JSONUtil;
 import org.geekbang.projects.cs.Application;
@@ -27,10 +27,17 @@ public class FlkEncryptorTest {
 
         try {
             URI baseUri = new URI("https://10.20.141.76:9443/hamc1381");
+            LengthDto req = new LengthDto();
+            req.setLength(16);
+            EncryptorApiResponse resp = flkEncryptorApiProvider.cryptoGenRandom(baseUri, req);
+            System.out.println("随机数为：" + JSONUtil.toJsonStr(req));
+            System.out.println("随机数为：" + JSONUtil.toJsonStr(resp));
+
             HmacIdentificationDto req1 = new HmacIdentificationDto();
             req1.setLength(16);
             req1.setIdentification("sm1_1");
             EncryptorApiResponse resp1 = flkEncryptorApiProvider.hmacIdentification(baseUri, req1);
+            System.out.println("完整性：" + JSONUtil.toJsonStr(req1));
             System.out.println("完整性：" + JSONUtil.toJsonStr(resp1));
 
             HmacWithIdentDto req2 = new HmacWithIdentDto();
@@ -38,11 +45,13 @@ public class FlkEncryptorTest {
             req2.setPlainIsEncode(false);
             req2.setData("fhasdfff");
             EncryptorApiResponse resp2 = flkEncryptorApiProvider.hmacWithIdent(baseUri, req2);
+            System.out.println("完整性：" + JSONUtil.toJsonStr(req2));
             System.out.println("完整性：" + JSONUtil.toJsonStr(resp2));
 
             IdentificationDto req3 = new IdentificationDto();
             req3.setIdentification("sm4_1");
             EncryptorApiResponse resp3 = flkEncryptorApiProvider.symmetricIdentification(baseUri, req3);
+            System.out.println("机密性：" + JSONUtil.toJsonStr(req3));
             System.out.println("机密性：" + JSONUtil.toJsonStr(resp3));
 
             EncryptDto req4 = new EncryptDto();
@@ -54,17 +63,19 @@ public class FlkEncryptorTest {
             req4.setPadMode("PKCS5Padding");
             req4.setPlainIsEncode(false);
             EncryptorApiResponse resp4 = flkEncryptorApiProvider.sysEncryptIdentification(baseUri, req4);
+            System.out.println("机密性加密：" + JSONUtil.toJsonStr(req4));
             System.out.println("机密性加密：" + JSONUtil.toJsonStr(resp4));
 
             DecryptDto req5 = new DecryptDto();
             req5.setKey("sm4_1");
             req5.setAlgorithmType("sm4");
-            req5.setEncryptData("fe9nL3aTCAbTa9hIBseK5fFljWvIYnyczInmVIioqVE");
+            req5.setEncryptData(resp4.getData().toString());
             req5.setEncMode("cbc");
             req5.setIv("AAAAAAAAAAAAAAAAAAAAAA==");
             req5.setPadMode("PKCS5Padding");
             req5.setPlainIsEncode(false);
             EncryptorApiResponse resp5 = flkEncryptorApiProvider.sysDecryptIdentification(baseUri, req5);
+            System.out.println("机密性解密：" + JSONUtil.toJsonStr(req5));
             System.out.println("机密性解密：" + JSONUtil.toJsonStr(resp5));
 
 
@@ -78,24 +89,25 @@ public class FlkEncryptorTest {
             req6.setPlainIsEncode(false);
             req6.setSkipFields(Arrays.asList("id"));
             EncryptorApiResponse resp6 = flkEncryptorApiProvider.symmetricEncryptBatch(baseUri, req6);
+            System.out.println("批量加密：" + JSONUtil.toJsonStr(req6));
             System.out.println("批量加密：" + JSONUtil.toJsonStr(resp6));
 
 
             BatchDecryptDto req7 = new BatchDecryptDto();
             req7.setKey("xQM9Kv70IOfYk0A877Uuiw==");
             req7.setAlgorithmType("sm4");
-            req7.setEncryptData(Arrays.asList(new DtoTest2(1L,"3aQ8OGWfpNf6IK2FtOtaug=="),new DtoTest2(2L,"YGJZ2YnYyNxfkhLmb/F+MQ==")));
+            req7.setEncryptData(Arrays.asList(new DtoTest1(1L,"3aQ8OGWfpNf6IK2FtOtaug=="),new DtoTest1(2L,"YGJZ2YnYyNxfkhLmb/F+MQ==")));
             req7.setEncMode("cbc");
             req7.setIv("AAAAAAAAAAAAAAAAAAAAAA==");
             req7.setPadMode("PKCS5Padding");
             req7.setPlainIsEncode(false);
             req7.setSkipFields(Arrays.asList("id"));
             EncryptorApiResponse resp7 = flkEncryptorApiProvider.symmetricDecryptBatch(baseUri, req7);
+            System.out.println("批量解密：" + JSONUtil.toJsonStr(req7));
             System.out.println("批量解密：" + JSONUtil.toJsonStr(resp7));
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
 
-//        ICustomerStaffService bean = SpringContextHolder.getBean(ICustomerStaffService.class);
     }
 }
