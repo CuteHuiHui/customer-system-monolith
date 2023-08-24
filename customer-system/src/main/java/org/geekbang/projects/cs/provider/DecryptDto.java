@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * {
  * "algorithmType":"sm4",
- * "data":"1234567812345678",
+ * "encryptData":"fe9nL3aTCAbTa9hIBseK5fFljWvIYnyczInmVIioqVE=",
  * "encMode":"cbc",
  * "iv":"AAAAAAAAAAAAAAAAAAAAAA==",
  * "key":"sm4_1",

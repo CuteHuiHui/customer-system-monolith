@@ -61,4 +61,24 @@ public interface FlkEncryptorApiProvider {
     @PostMapping(path = "/crypto/sysDecrypt/identification", consumes = "application/json")
     EncryptorApiResponse sysDecryptIdentification(URI baseUri, @RequestBody DecryptDto param);
 
+    /**
+     * 外部密钥数据对称加密-批量
+     *
+     * @param baseUri
+     * @param param
+     * @return
+     */
+    @PostMapping(path = "/crypto/external/symmetricEncryptBatch", consumes = "application/json")
+    EncryptorApiResponse symmetricEncryptBatch(URI baseUri, @RequestBody BatchEncryptDto param);
+
+
+    /**
+     * 外部密钥数据对称解密-批量
+     *
+     * @param baseUri
+     * @param param
+     * @return
+     */
+    @PostMapping(path = "/crypto/external/symmetricDecryptBatch", consumes = "application/json")
+    EncryptorApiResponse symmetricDecryptBatch(URI baseUri, @RequestBody BatchDecryptDto param);
 }
