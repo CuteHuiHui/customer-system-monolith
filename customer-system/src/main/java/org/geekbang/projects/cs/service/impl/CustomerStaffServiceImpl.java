@@ -31,11 +31,12 @@ public abstract class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaff
     @Override
     public CustomerStaff findCustomerStaffById(Long staffId) {
         System.out.println("main");
-        doBranch();//不同业务场景走不同child
+        doBranch1();//不同业务场景走不同child
+        outsourcingSystemService.test();
         return null;
     }
 
-    protected abstract void doBranch();
+    protected abstract void doBranch1();
 
     @Override
     public PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex) {

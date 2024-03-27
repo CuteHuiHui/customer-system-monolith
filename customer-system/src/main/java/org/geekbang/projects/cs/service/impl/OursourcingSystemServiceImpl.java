@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OursourcingSystemServiceImpl extends ServiceImpl<OutsourcingSystemMapper, OutsourcingSystem> implements IOutsourcingSystemService {
+public abstract class OursourcingSystemServiceImpl extends ServiceImpl<OutsourcingSystemMapper, OutsourcingSystem> implements IOutsourcingSystemService {
 
     @Override
     public PageObject<OutsourcingSystem> findPagedOutsourcingSystems(Long pageSize, Long pageIndex) {
@@ -54,4 +54,12 @@ public class OursourcingSystemServiceImpl extends ServiceImpl<OutsourcingSystemM
 
         return this.removeById(staffId);
     }
+
+    @Override
+    public void test() {
+        doBranch2();
+    }
+
+    protected abstract void doBranch2();
+
 }

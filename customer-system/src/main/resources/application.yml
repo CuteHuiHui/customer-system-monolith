@@ -43,11 +43,7 @@ mybatis-plus:
       # 逻辑删除字面值：删除为1
       logic-delete-value: 1
 
-custdev:
-  active: child1
-  package:
-    base: org.geekbang
-    custom: org.geekbang.projects.cs.service.impl.child
+spring.profiles.active: child2
 
 ---
 spring:

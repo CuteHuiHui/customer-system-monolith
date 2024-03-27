@@ -18,4 +18,6 @@ public interface IOutsourcingSystemService {
     Boolean updateOutsourcingSystem(OutsourcingSystem outsourcingSystem);
 
     Boolean deleteOutsourcingSystemById(Long systemId);
+
+    void test();
 }

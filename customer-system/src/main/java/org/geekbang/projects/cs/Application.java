@@ -1,6 +1,5 @@
 package org.geekbang.projects.cs;
 
-import com.dbappsecurity.base.custdev.CustDevConfigurer;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -9,9 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-@CustDevConfigurer
 @Slf4j
-@SpringBootApplication(scanBasePackages = "package")
+@SpringBootApplication
 @MapperScan("org.geekbang.projects.cs.mapper")
 @EnableFeignClients(basePackages = {"org.geekbang.projects.cs.provider"})
 public class Application {
