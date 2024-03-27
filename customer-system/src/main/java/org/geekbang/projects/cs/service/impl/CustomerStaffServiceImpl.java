@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, CustomerStaff> implements ICustomerStaffService {
+public abstract class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, CustomerStaff> implements ICustomerStaffService {
 
 
     @Autowired
@@ -27,6 +27,15 @@ public class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, C
 
     @Autowired
     OutsourcingSystemClient outsourcingSystemClient;
+
+    @Override
+    public CustomerStaff findCustomerStaffById(Long staffId) {
+        System.out.println("main");
+        doBranch();//不同业务场景走不同child
+        return null;
+    }
+
+    protected abstract void doBranch();
 
     @Override
     public PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex) {
@@ -64,11 +73,7 @@ public class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, C
     }
 
 
-    @Override
-    public CustomerStaff findCustomerStaffById(Long staffId) {
 
-        return baseMapper.selectById(staffId);
-    }
 
     @Override
     public Boolean createCustomerStaff(CustomerStaff customerStaff) throws BizException {
