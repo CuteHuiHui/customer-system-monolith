@@ -13,13 +13,15 @@ import org.geekbang.projects.cs.mapper.CustomerStaffMapper;
 import org.geekbang.projects.cs.service.ICustomerStaffService;
 import org.geekbang.projects.cs.service.IOutsourcingSystemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
-public abstract class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, CustomerStaff> implements ICustomerStaffService {
+@ConditionalOnProperty(prefix = "custom", name = "type", havingValue="main", matchIfMissing=true)
+public class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaffMapper, CustomerStaff> implements ICustomerStaffService {
 
 
     @Autowired
@@ -30,13 +32,15 @@ public abstract class CustomerStaffServiceImpl extends ServiceImpl<CustomerStaff
 
     @Override
     public CustomerStaff findCustomerStaffById(Long staffId) {
-        System.out.println("main");
-        doBranch1();//不同业务场景走不同child
+        System.out.println("coming");
+        this.test();
         outsourcingSystemService.test();
         return null;
     }
 
-    protected abstract void doBranch1();
+    public void test() {
+        System.out.println("main method");
+    }
 
     @Override
     public PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex) {
