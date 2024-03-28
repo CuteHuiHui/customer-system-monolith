@@ -12,7 +12,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public abstract class OursourcingSystemServiceImpl extends ServiceImpl<OutsourcingSystemMapper, OutsourcingSystem> implements IOutsourcingSystemService {
+public class OursourcingSystemServiceImpl extends ServiceImpl<OutsourcingSystemMapper, OutsourcingSystem> implements IOutsourcingSystemService {
+
+    @Override
+    public void test() {
+        System.out.println("未定制类coming");
+    }
 
     @Override
     public PageObject<OutsourcingSystem> findPagedOutsourcingSystems(Long pageSize, Long pageIndex) {
@@ -55,11 +60,7 @@ public abstract class OursourcingSystemServiceImpl extends ServiceImpl<Outsourci
         return this.removeById(staffId);
     }
 
-    @Override
-    public void test() {
-        doBranch2();
-    }
 
-    protected abstract void doBranch2();
+
 
 }
