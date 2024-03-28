@@ -43,7 +43,7 @@ mybatis-plus:
       # 逻辑删除字面值：删除为1
       logic-delete-value: 1
 
-custom.type: tyy
+custom.type: child
 
 ---
 spring:

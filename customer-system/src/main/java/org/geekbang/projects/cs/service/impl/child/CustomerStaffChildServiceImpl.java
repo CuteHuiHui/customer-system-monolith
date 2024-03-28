@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
-@ConditionalOnProperty(prefix = "custom", name = "type", havingValue="tyy", matchIfMissing=false)
+@ConditionalOnProperty(prefix = "custom", name = "type", havingValue="child", matchIfMissing=false)
 public class CustomerStaffChildServiceImpl extends CustomerStaffServiceImpl {
 
     @Override
